@@ -32,6 +32,7 @@ public class Wanad extends Thread {
 	}
 	
 	private int ballisticAngle(int x, int y) {
+		//https://en.wikipedia.org/wiki/Projectile_motion#Angle_'"`UNIQ--postMath-0000003A-QINU`"'_required_to_hit_coordinate_(x,y)
 		double vSquared = v*v;
 		double squareRoot = Math.sqrt( (vSquared*vSquared) - gravConstant*(gravConstant*x*x + 2*y*v*v));
 		int theta1 = Math.toIntExact(Math.round(Math.toDegrees(Math.atan((vSquared + squareRoot)/(gravConstant*x)))));
