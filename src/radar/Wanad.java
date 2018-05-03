@@ -1,6 +1,8 @@
 package radar;
 
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
+import lejos.hardware.motor.Motor;
+import lejos.hardware.motor.NXTRegulatedMotor;
 import lejos.hardware.port.MotorPort;
 
 /**
@@ -8,7 +10,8 @@ import lejos.hardware.port.MotorPort;
  */
 public class Wanad extends Thread {
 
-	private EV3MediumRegulatedMotor motor = new EV3MediumRegulatedMotor(MotorPort.B);
+	//private EV3MediumRegulatedMotor motor = new EV3MediumRegulatedMotor(MotorPort.B);
+	private NXTRegulatedMotor motor;
 	private DataExchange de;
 	
 	final private int maxAngle =  75;
@@ -18,7 +21,10 @@ public class Wanad extends Thread {
 	
 	public Wanad(DataExchange de) {
 		this.de = de;
-		motor.setSpeed(100);
+		this.motor = Motor.B;
+		this.motor.setSpeed(100);
+		
+		
 	}
 	
 	private boolean isWithinAllowedAngle(int angle) {

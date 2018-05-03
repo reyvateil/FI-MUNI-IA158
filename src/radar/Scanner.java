@@ -12,11 +12,13 @@ public class Scanner extends Thread {
 	public Scanner(DataExchange de) {
 		this.de = de;
 		this.motor = Motor.A;
-		this.degree = 135;
+		//this.degree = 135;
+		this.degree = 90;
 	}
 	
 	public void run() {
-		motor.setSpeed(200);
+		//motor.setSpeed(200);
+		motor.setSpeed(100);
 		while(true) {
 			if(de.getStop()) {
 				waitUntilClear();

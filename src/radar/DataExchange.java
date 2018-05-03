@@ -5,7 +5,6 @@ public class DataExchange {
 	private boolean aimTarget;
 	private boolean fireAtWill;
 	
-	
 	private int distanceToTarget;
 	private int weaponAngle;
 	private int x;

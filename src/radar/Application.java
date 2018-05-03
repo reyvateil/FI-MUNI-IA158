@@ -8,8 +8,13 @@ public class Application {
 		MeasureProximity mp = new MeasureProximity(de);
 		Scanner sc = new Scanner(de);
 		
+		FireUnit fu = new FireUnit(de);
+		
 		mp.start();
 		sc.start();
+		
+		//fu.start();
+		
 		
 		System.out.println("START");
 		/* test branch update*/
