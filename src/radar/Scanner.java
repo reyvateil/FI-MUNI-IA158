@@ -16,27 +16,29 @@ public class Scanner extends Thread {
 	public Scanner(DataExchange de) {
 		this.de = de;
 		this.motor = Motor.A;
-		
+		motor.setSpeed(100);
 		de.setScannerMotorA(motor);
 		//this.degree = 135;
-		this.degree = 50;
+		this.degree = 70;
+		this.setPriority(10);
 	}
 	
 	public void run() {
-		//motor.setSpeed(200);
-		motor.setSpeed(100);
+		
+		
 		while(true) {
-			/*if(de.getStop()) {
+			if(de.getStop()) {
 				waitUntilClear();
 				
 			} else {
 				if (!motor.isMoving() && !motor.isStalled()) {
-					//odtud jsem vzal kod nize
-			}*/
-			System.out.println("Moving");
-			motor.rotateTo(degree, true);
-			motor.waitComplete();
-			degree = -degree;
+					System.out.println("Moving");
+					motor.rotateTo(degree, true);
+					//motor.waitComplete();
+					degree = -degree;
+				}
+			
+			}
 		}
 	}
 	

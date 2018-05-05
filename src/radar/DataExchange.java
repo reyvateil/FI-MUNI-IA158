@@ -85,7 +85,6 @@ public class DataExchange {
 	}
 
 
-
 	public void setFireAtWill(boolean fireAtWill) {
 		this.fireAtWill = fireAtWill;
 	}
@@ -144,12 +143,11 @@ public class DataExchange {
 		this.positionOfScanMotorWhenFindTarget = positionOfScanMotorWhenFindTarget;
 	}
 	
-	
-	/*public boolean isFocusedTarget() {
-		return focusedTarget;
+	public void resetMeasuredValues() {
+		x = 0;
+		y = 0;
+		distanceToTarget = -1;
+		setAimTarget(false);
 	}
-	
-	public void setFocusedTarget(boolean b) {
-		this.focusedTarget = b;
-	}*/
+
 }

@@ -20,7 +20,7 @@ public class Application {
 		sc.start();
 		wa.start();
 		fu.start();
-		//anglemotor.start();
+		
 		
 		
 		
