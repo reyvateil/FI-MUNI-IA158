@@ -17,15 +17,15 @@ public class MeasureProximity extends Thread {
 		this.distances = new float[sensor.sampleSize()];
 		this.de = de;
 		this.fireunit = new FireUnit(de);
+		this.fireunit.start();
 	}
 	
 	public void run() {
 		while(true) {
-			/*sensor.getSeekMode().fetchSample(distances, 0);
-			//sensor.getDistanceMode().fetchSample(distances, 0);
-			//if (distances[0] <= 50 && distances[0] >= 30) {
+			//sensor.getSeekMode().fetchSample(distances, 0);
+			sensor.getDistanceMode().fetchSample(distances, 0);
+			if (distances[0] <= 20 && distances[0] >= 5) {
 				//System.out.println("d = " + distances[0] + "!!!");
-			if (sensor.sampleSize() > 0) {
 				System.out.println(distances[0]);
 				de.setStop(true);
 				//Sound.twoBeeps();
@@ -34,7 +34,7 @@ public class MeasureProximity extends Thread {
 			} else {
 				de.setStop(false);
 				//System.out.println("d = " + distances[0]);
-			}*/
+			}
 			
 		}
 	}

@@ -10,17 +10,15 @@ public class Application {
 		DataExchange de = new DataExchange();
 		MeasureProximity mp = new MeasureProximity(de);
 		Scanner sc = new Scanner(de);
-		
-		FireUnit fu = new FireUnit(de);
-		
+				
 		AngleMotor anglemotor = new AngleMotor();
 		
 		
 		mp.start();
-		//sc.start();
+		sc.start();
 		
 		//anglemotor.start();
-		fu.start();
+		
 		
 		
 		System.out.println("START");

@@ -9,26 +9,29 @@ public class Scanner extends Thread {
 	private NXTRegulatedMotor motor;
 	private int degree;
 	
+	
 	public Scanner(DataExchange de) {
 		this.de = de;
 		this.motor = Motor.A;
 		//this.degree = 135;
-		this.degree = 90;
+		this.degree = 50;
 	}
 	
 	public void run() {
 		//motor.setSpeed(200);
 		motor.setSpeed(100);
 		while(true) {
-			if(de.getStop()) {
+			/*if(de.getStop()) {
 				waitUntilClear();
+				
 			} else {
 				if (!motor.isMoving() && !motor.isStalled()) {
-					System.out.println("Moving");
-					motor.rotateTo(degree, true);
-					degree = -degree;
-				}
-			}
+					
+			}*/
+			System.out.println("Moving");
+			motor.rotateTo(degree, true);
+			motor.waitComplete();
+			degree = -degree;
 		}
 	}
 	
