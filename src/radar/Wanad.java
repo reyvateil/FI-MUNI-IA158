@@ -23,8 +23,6 @@ public class Wanad extends Thread {
 		this.de = de;
 		this.motor = Motor.B;
 		this.motor.setSpeed(100);
-		
-		
 	}
 	
 	private boolean isWithinAllowedAngle(int angle) {

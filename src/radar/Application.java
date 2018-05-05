@@ -1,5 +1,8 @@
 package radar;
 
+import lejos.hardware.motor.Motor;
+import lejos.hardware.motor.NXTRegulatedMotor;
+
 public class Application {
 
 	public synchronized static void main(String[] args) throws InterruptedException {
@@ -10,16 +13,20 @@ public class Application {
 		
 		FireUnit fu = new FireUnit(de);
 		
-		mp.start();
-		sc.start();
+		AngleMotor anglemotor = new AngleMotor();
 		
-		//fu.start();
+		
+		mp.start();
+		//sc.start();
+		
+		//anglemotor.start();
+		fu.start();
 		
 		
 		System.out.println("START");
 		/* test branch update*/
 		while(true) {
-
+			
 		}
 	}
 

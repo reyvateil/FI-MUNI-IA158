@@ -12,33 +12,36 @@ import lejos.robotics.BaseMotor;
 public class FireUnit extends Thread {
 	
 	private DataExchange de;
-	private NXTRegulatedMotor motor;
+	private NXTRegulatedMotor motorC;
 	private int degree;
 
 	
 	
 	public FireUnit(DataExchange de) {
 		this.de = de;
-		this.motor = Motor.C;
+		this.motorC = Motor.C;
 		this.degree = 1000;
-		this.motor.setSpeed(300);
+		this.motorC.setSpeed(300);
+	
 		
 	}
 	
-	/*public void run() {
-		int degree = 5000;
+	public void run() {
+		/*int degree = 5000;
 		while(true) {
 				if (de.getStop()) {
 					motor.forward();  
 				}
-			}
-			
-		
-	}*/
+			}*/
+		while(true) {
+			System.out.println(motorC.getTachoCount());
+		}
+	}
 	
 	public void fire() {
 		//if (de.setFireAtWill){}
-		motor.rotate(this.degree);
+		//motor.rotate(this.degree);
+		
 	}
 	
 }

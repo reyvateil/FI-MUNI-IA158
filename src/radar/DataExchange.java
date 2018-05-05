@@ -1,13 +1,32 @@
 package radar;
 
 public class DataExchange {
+	
+	// Toto je len testovacia premenna, ktora sa nastavi na true
+	// vtedy ak sa nejaky objekt nachadza 30-50cm vzdialenosti
+	// Vo finalnom produkte by sa nemala nachadzat
 	private boolean stopRadar;
+	
+	// Premenna, ktora da triede Wanad vediet, ze ma vypocitat uhol theta
+	// a nastavit tento uhol na motore
 	private boolean aimTarget;
+	
+	// Premenna, ktora da triede FireUnit vediet, ze moze strielat
+	// blizsie nespecifikovane -- bud sa nastavi v okamih ked su
+	// motory v spravnej pozicii alebo predtym, s tym, ze nevystreli
+	// skor/neskor 
 	private boolean fireAtWill;
 	
+	// Vzdialenost merana IR senzorom
 	private int distanceToTarget;
+	
+	// Uhol theta (v stupnoch), ktory sa ma nastavit na motore B
 	private int weaponAngle;
+	
+	// Vzdialenost objektu od dela
 	private int x;
+	
+	// Relativna vertikalna vzdialenost voci delu (delo je v [0,0])
 	private int y;
 	
 	
