@@ -37,6 +37,7 @@ public class FireUnit extends Thread {
 	}*/
 	
 	public void fire() {
+		//if (de.setFireAtWill){}
 		motor.rotate(this.degree);
 	}
 	
