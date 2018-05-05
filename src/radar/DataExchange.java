@@ -1,5 +1,7 @@
 package radar;
 
+import lejos.hardware.motor.NXTRegulatedMotor;
+
 public class DataExchange {
 	
 	// Toto je len testovacia premenna, ktora sa nastavi na true
@@ -29,7 +31,23 @@ public class DataExchange {
 	// Relativna vertikalna vzdialenost voci delu (delo je v [0,0])
 	private int y;
 	
+	// Pozice motoru kdyz objevil cil
+	private int positionOfScanMotorWhenFindTarget = Integer.MIN_VALUE;
 	
+	private NXTRegulatedMotor scannerMotorA;
+	
+	public NXTRegulatedMotor getScannerMotorA() {
+		return scannerMotorA;
+	}
+
+
+
+	public void setScannerMotorA(NXTRegulatedMotor nxtRegulatedMotor) {
+		this.scannerMotorA = nxtRegulatedMotor;
+	}
+
+
+
 	public DataExchange() {
 		stopRadar = false;
 		aimTarget = false;
@@ -113,4 +131,25 @@ public class DataExchange {
 	public void setAngle(int angle) {
 		weaponAngle = angle;
 	}
+
+
+
+	public int getPosOfScanWhenFindTarget() {
+		return positionOfScanMotorWhenFindTarget;
+	}
+
+
+
+	public void setPosOfScanWhenFindTarget(int positionOfScanMotorWhenFindTarget) {
+		this.positionOfScanMotorWhenFindTarget = positionOfScanMotorWhenFindTarget;
+	}
+	
+	
+	/*public boolean isFocusedTarget() {
+		return focusedTarget;
+	}
+	
+	public void setFocusedTarget(boolean b) {
+		this.focusedTarget = b;
+	}*/
 }

@@ -11,7 +11,8 @@ import lejos.hardware.port.MotorPort;
 public class Wanad extends Thread {
 
 	//private EV3MediumRegulatedMotor motor = new EV3MediumRegulatedMotor(MotorPort.B);
-	private NXTRegulatedMotor motor;
+	//private NXTRegulatedMotor motor;
+	private AngleMotor motor;
 	private DataExchange de;
 	
 	final private int maxAngle =  75;
@@ -21,7 +22,7 @@ public class Wanad extends Thread {
 	
 	public Wanad(DataExchange de) {
 		this.de = de;
-		this.motor = Motor.B;
+		this.motor = new AngleMotor(de);
 		this.motor.setSpeed(100);
 	}
 	
@@ -29,7 +30,7 @@ public class Wanad extends Thread {
 		return (angle >= minAngle && angle <= maxAngle);
 	}
 	
-	private int ballisticAngle(int x, int y) {
+	private int ballisticAngle(int x, int y) {/*
 		//https://en.wikipedia.org/wiki/Projectile_motion#Angle_'"`UNIQ--postMath-0000003A-QINU`"'_required_to_hit_coordinate_(x,y)
 		double vSquared = v*v;
 		double squareRoot = Math.sqrt( (vSquared*vSquared) - gravConstant*(gravConstant*x*x + 2*y*v*v));
@@ -43,19 +44,26 @@ public class Wanad extends Thread {
 		} else {
 			// do nothing
 		}
-		return 0;
+		return 0;*/
+		
+		return 60;
 	}
 	
 	public void run() {
+		motor.start();
+		
 		while(true) {
-			if(de.isAimTarget()) {			
+			motor.setPriority(7);
+			if(de.isAimTarget()) {
 				int x = de.getX();
 				int y = de.getY();
-				motor.rotate(ballisticAngle(x, y), true);
-				de.setAimTarget(false);
-				de.setFireAtWill(true);
+				//motor.rotate(ballisticAngle(x, y), true); predani uhlu tride fireunit 
+				motor.setAngle(ballisticAngle(x, y));
+				//de.setAimTarget(false);
+				//de.setFireAtWill(true);
 				Thread.yield();
 			}
+			motor.setPriority(5);
 		}
 	}
 }
