@@ -4,6 +4,8 @@ import lejos.hardware.motor.NXTRegulatedMotor;
 
 public class DataExchange {
 	
+	Status status = null;
+	
 	// Toto je len testovacia premenna, ktora sa nastavi na true
 	// vtedy ak sa nejaky objekt nachadza 30-50cm vzdialenosti
 	// Vo finalnom produkte by sa nemala nachadzat
@@ -52,6 +54,7 @@ public class DataExchange {
 		stopRadar = false;
 		aimTarget = false;
 		fireAtWill = false;
+		status = Status.MEASURE;
 	}
 	
 	
@@ -95,17 +98,10 @@ public class DataExchange {
 		return x;
 	}
 	
-	public int getY() {
-		return y;
-	}
-	
 	public void setX(int x) {
 		this.x = x;
 	}
 	
-	public void setY(int y) {
-		this.y = y;
-	}
 	
 	public boolean getStop() {
 		return stopRadar;
@@ -113,14 +109,6 @@ public class DataExchange {
 	
 	public void setStop(boolean val) {
 		stopRadar = val;
-	}
-	
-	public int getDistance() {
-		return distanceToTarget;
-	}
-	
-	public void setDistance(int distance) {
-		distanceToTarget = distance;
 	}
 	
 	public int getAngle() {

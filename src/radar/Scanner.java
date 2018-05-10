@@ -18,7 +18,6 @@ public class Scanner extends Thread {
 		this.motor = Motor.A;
 		motor.setSpeed(100);
 		de.setScannerMotorA(motor);
-		//this.degree = 135;
 		this.degree = 70;
 		this.setPriority(10);
 	}
@@ -34,7 +33,6 @@ public class Scanner extends Thread {
 				if (!motor.isMoving() && !motor.isStalled()) {
 					System.out.println("Moving");
 					motor.rotateTo(degree, true);
-					//motor.waitComplete();
 					degree = -degree;
 				}
 			

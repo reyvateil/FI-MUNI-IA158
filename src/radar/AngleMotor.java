@@ -70,7 +70,6 @@ public class AngleMotor extends Thread {
 	public void setReadyToAim(boolean readyToAim) {
 		this.readyToAim = readyToAim;
 	}
-
 	
 	public void setSpeed(int speed) {
 		this.speed = speed;
