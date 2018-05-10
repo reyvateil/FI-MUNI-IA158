@@ -3,7 +3,7 @@ package radar;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.motor.NXTRegulatedMotor;
 
-public class AngleMotor extends Thread {
+public class AngleMotor{
 	private NXTRegulatedMotor motorB = Motor.B;
 	private int speed;
 	private DataExchange de;
@@ -26,7 +26,7 @@ public class AngleMotor extends Thread {
 		motorB.resetTachoCount();
 		this.defaultPosition = 0;
 		
-		setSpeed(500);
+		motorB.setSpeed(500);
 		
 		defaultPosition();
 	}
@@ -34,24 +34,8 @@ public class AngleMotor extends Thread {
 	
 	public void run(){
 		// > 0 zneamena jit s motorem do plusu, coz je pohyb dolu
-	
-		while(true) {
-
-			if(de.isAimTarget() && isReadyToAim()) {
-				//motorB.rotateTo(angle,true);
-				motorB.rotateTo(-de.getAngle(),true);
-				motorB.waitComplete();
-			
-				de.setAimTarget(false);
-				de.setFireAtWill(true);
-				setReadyToAim(false);
-				
-			}
-
-		}
-		
-			
-		
+		motorB.rotateTo(-Wanad.ballisticAngle(de.getX()),true);
+		de.status = Status.FIRE;
 	}
 	
 	public boolean defaultPosition() {
@@ -62,27 +46,4 @@ public class AngleMotor extends Thread {
 		return true;
 	}
 	
-		
-	public boolean isReadyToAim() {
-		return readyToAim;
-	}
-
-	public void setReadyToAim(boolean readyToAim) {
-		this.readyToAim = readyToAim;
-	}
-	
-	public void setSpeed(int speed) {
-		this.speed = speed;
-		this.motorB.setSpeed(speed);
-	}
-	
-	public void setAngle(int angle) {
-		this.angle = -angle;
-		this.setReadyToAim(true);
-	
-	}
-	
-	public int getAngle() {
-		return angle;
-	}
 }

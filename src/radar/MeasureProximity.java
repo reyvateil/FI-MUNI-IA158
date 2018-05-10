@@ -6,7 +6,7 @@ import lejos.hardware.Sound;
 import lejos.hardware.lcd.LCD;
 import lejos.hardware.port.SensorPort;
 
-public class MeasureProximity extends Thread {
+public class MeasureProximity {
 	
 	private float[] sampleData;
 	private EV3IRSensor sensor;

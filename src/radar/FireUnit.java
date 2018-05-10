@@ -3,7 +3,7 @@ package radar;
 import lejos.hardware.motor.Motor;
 import lejos.hardware.motor.NXTRegulatedMotor;
 
-public class FireUnit extends Thread {
+public class FireUnit {
 	
 	private DataExchange de;
 	private NXTRegulatedMotor motorC;
@@ -20,13 +20,15 @@ public class FireUnit extends Thread {
 	}
 	
 	public void run() {
-			
+		/*	
 		if(de.isFireAtWill() && de.getStop()){
 			fire();
 			System.out.println("!!! FIRE !!!");
 			de.resetMeasuredValues();
-			de.setPosOfScanWhenFindTarget(Integer.MIN_VALUE);
-		}			
+			de.setPosOfScanWhenFindTarget(Integer.MIN_VALUE);	
+		}*/
+		System.out.println("!!! FIRE !!!");
+		de.status = Status.MEASURE;
 	}
 	
 	public void fire() {

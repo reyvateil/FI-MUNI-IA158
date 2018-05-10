@@ -11,6 +11,7 @@ public class RadarLogic extends Thread {
 		this.fu = new FireUnit(de);
 		this.am = new AngleMotor(de);
 		this.mp = new MeasureProximity(de);
+		this.de = de;
 	}
 	
 	public void run() {
@@ -18,30 +19,28 @@ public class RadarLogic extends Thread {
 			
 			switch(de.status) {
 				case ALIGN:
-					try {
-						am.join();
-					} catch(InterruptedException ie) {
-						System.out.println("Angle Motor Fail");
-					}
+					System.out.println(" ALIGN -- angle motor");
+					am.run();
 					break;
 				case FIRE:
-					try {
-						fu.join();
-					} catch(InterruptedException ie) {
-						System.out.println("Fire Unit Fail");
-					}
+					System.out.println(" FIRE ");
+					fu.run();
+					am.defaultPosition();
 					break;
 				case MEASURE:
 				default:
-					try {
-						mp.join();
-					} catch(InterruptedException ie) {
-						System.out.println("Measure Proximity Fail");
-					}
+					System.out.println(" MEASURE -- measure proximity");
+					mp.run();
 					break;
 			}
 			
+			try {
+				Thread.sleep(500);
+			}catch (InterruptedException e) {
+				System.out.println("error");
+			}
 		}
+		
 	}
 	
 }

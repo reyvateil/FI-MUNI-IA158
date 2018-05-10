@@ -5,11 +5,11 @@ public class Application {
 	public static void main(String[] args) throws InterruptedException {
 		
 		DataExchange de = new DataExchange();
-		MeasureProximity mp = new MeasureProximity(de);
+		RadarLogic rl = new RadarLogic(de);
 		Scanner sc = new Scanner(de);
 		
-		mp.start();
 		sc.start();
+		rl.start();
 		
 		System.out.println("START");
 		
