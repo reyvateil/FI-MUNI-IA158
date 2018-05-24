@@ -21,21 +21,26 @@ public class AngleMotor{
 		this.de = de;
 		readyToAim = false;
 		motorB.setSpeed(50);
-		motorB.rotateTo(defaultPosition,true);
+		motorB.rotateTo(defaultPosition, true);
 		motorB.waitComplete();
 		motorB.resetTachoCount();
 		this.defaultPosition = 0;
 		
 		motorB.setSpeed(500);
 		
-		defaultPosition();
+		//defaultPosition();
 	}
 	
 	
 	public void run(){
 		// > 0 zneamena jit s motorem do plusu, coz je pohyb dolu
-		motorB.rotateTo(-Wanad.ballisticAngle(de.getX()),true);
-		de.status = Status.FIRE;
+		int theta = Wanad.ballisticAngle(de.getX());
+		if(theta != Integer.MIN_VALUE) {
+			motorB.rotateTo(-theta, false);
+			de.status = Status.FIRE;
+		} else {
+			de.status = Status.MEASURE;
+		}
 	}
 	
 	public boolean defaultPosition() {

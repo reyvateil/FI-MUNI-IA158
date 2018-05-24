@@ -21,13 +21,12 @@ public class MeasureProximity {
 	// Distance from beacon
 	public void run()  {
 			sensor.getSeekMode().fetchSample(sampleData, 0);
-			
-			if (((sampleData[1] >= 10) && (sampleData[1] <= 80)) && 
+			// 10 -- 80
+			if (((sampleData[1] >= 10) && (sampleData[1] <= 75)) && 
 				((sampleData[0] >= -2) && (sampleData[0] <= 2 ))) {
 
 				de.setX(((int)sampleData[1]*2));
-				de.status = Status.ALIGN;
-				Thread.yield();			
+				de.status = Status.ALIGN;		
 			}
 	}
 }

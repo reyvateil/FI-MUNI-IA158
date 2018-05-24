@@ -16,7 +16,7 @@ public class Scanner extends Thread {
 	public Scanner(DataExchange de) {
 		this.de = de;
 		this.motor = Motor.A;
-		motor.setSpeed(100);
+		motor.setSpeed(15);
 		de.setScannerMotorA(motor);
 		this.degree = 70;
 		this.setPriority(10);

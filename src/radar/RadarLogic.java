@@ -17,28 +17,23 @@ public class RadarLogic extends Thread {
 	public void run() {
 		while(true) {
 			
+			
 			switch(de.status) {
 				case ALIGN:
-					System.out.println(" ALIGN -- angle motor");
+					System.out.println(">ALIGN");
 					am.run();
 					break;
 				case FIRE:
-					System.out.println(" FIRE ");
+					System.out.println(">FIRE");
 					fu.run();
-					am.defaultPosition();
 					break;
 				case MEASURE:
 				default:
-					System.out.println(" MEASURE -- measure proximity");
+					//System.out.println(">MEASURE");
 					mp.run();
 					break;
 			}
 			
-			try {
-				Thread.sleep(500);
-			}catch (InterruptedException e) {
-				System.out.println("error");
-			}
 		}
 		
 	}

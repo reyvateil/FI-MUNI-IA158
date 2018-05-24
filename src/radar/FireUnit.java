@@ -20,30 +20,21 @@ public class FireUnit {
 	}
 	
 	public void run() {
-		/*	
-		if(de.isFireAtWill() && de.getStop()){
-			fire();
-			System.out.println("!!! FIRE !!!");
-			de.resetMeasuredValues();
-			de.setPosOfScanWhenFindTarget(Integer.MIN_VALUE);	
-		}*/
+		fire();
 		System.out.println("!!! FIRE !!!");
 		de.status = Status.MEASURE;
 	}
 	
 	public void fire() {
-		motorC.rotateTo(degree+200,true);
-		motorC.waitComplete();
-		de.setFireAtWill(false);
-		resetFireUnit();	
+		motorC.setSpeed(400);
+		motorC.rotateTo(degree+300, false);
+		resetFireUnit();
 	}
 	
 	public void resetFireUnit() {
 		motorC.setSpeed(500);
-		motorC.rotateTo(0,true);
-		motorC.waitComplete();
-		motorC.rotateTo(degree,true);
-		motorC.waitComplete();
+		motorC.rotateTo(0,false);
+		motorC.rotateTo(degree,false);
 		motorC.setSpeed(300);
 	}
 	
