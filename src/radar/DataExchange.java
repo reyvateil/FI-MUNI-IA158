@@ -1,7 +1,12 @@
 package radar;
 
 import lejos.hardware.motor.NXTRegulatedMotor;
-
+/**
+ * @author Gallo, Silhan
+ * @version 2018
+ * 
+ * Class which is used to save needed data.
+ */
 public class DataExchange {
 	
 	Status status = null;

@@ -2,8 +2,11 @@ package radar;
 
 import lejos.hardware.motor.Motor;
 import lejos.hardware.motor.NXTRegulatedMotor;
-/*
- * Moving with the IR sensor 
+/**
+ * @author Gallo, Silhan
+ * @version 2018
+ * 
+ * Motor which moving with the IR sensor 
  * 
  */
 public class Scanner extends Thread {
@@ -12,7 +15,10 @@ public class Scanner extends Thread {
 	private NXTRegulatedMotor motor;
 	private int degree;
 	
-	
+	/**
+	 * Constructor of moving motor
+	 * @param de DataExchange object
+	 */
 	public Scanner(DataExchange de) {
 		this.de = de;
 		this.motor = Motor.A;
@@ -22,9 +28,10 @@ public class Scanner extends Thread {
 		this.setPriority(10);
 	}
 	
+	/**
+	 * It's turning the whole scanner in range (-degree, + degree)
+	 */
 	public void run() {
-		
-		
 		while(true) {
 			if(de.getStop()) {
 				waitUntilClear();
@@ -40,6 +47,7 @@ public class Scanner extends Thread {
 		}
 	}
 	
+	
 	private void waitUntilClear() {
 		System.out.println("Waiting...");
 		if(motor.isMoving() && !motor.isStalled()) {
@@ -53,14 +61,4 @@ public class Scanner extends Thread {
 			System.exit(1);
 		}
 	}
-
-	public NXTRegulatedMotor getMotor() {
-		return motor;
-	}
-
-	public void setMotor(NXTRegulatedMotor motor) {
-		this.motor = motor;
-	}
-	
-	
 }

@@ -2,7 +2,12 @@ package radar;
 
 import lejos.hardware.motor.Motor;
 import lejos.hardware.motor.NXTRegulatedMotor;
-
+/**
+ * @author Gallo, Silhan
+ * @version 2018
+ * 
+ * Class which represents an angle motor which is used for set right angle.
+ */
 public class AngleMotor{
 	private NXTRegulatedMotor motorB = Motor.B;
 	private int speed;
@@ -16,7 +21,10 @@ public class AngleMotor{
 	private int defaultPosition = 45;
 	private int angle;
 	
-	
+	/**
+	 * Constructor of angle motor
+	 * @param de DataExchange object
+	 */
 	public AngleMotor(DataExchange de) {
 		this.de = de;
 		readyToAim = false;
@@ -25,13 +33,12 @@ public class AngleMotor{
 		motorB.waitComplete();
 		motorB.resetTachoCount();
 		this.defaultPosition = 0;
-		
 		motorB.setSpeed(500);
-		
-		//defaultPosition();
 	}
 	
-	
+	/**
+	 * Set the right angle of motor
+	 */
 	public void run(){
 		// > 0 zneamena jit s motorem do plusu, coz je pohyb dolu
 		int theta = Wanad.ballisticAngle(de.getX());
@@ -42,7 +49,10 @@ public class AngleMotor{
 			de.status = Status.MEASURE;
 		}
 	}
-	
+	/**
+	 * Set motor to default position
+	 * @return boolean True if the motor is set to defaul position
+	 */
 	public boolean defaultPosition() {
 		if ((motorB.getTachoCount() >= 1) || ( motorB.getTachoCount() <= - 1)){
 			motorB.rotateTo(defaultPosition,true);
