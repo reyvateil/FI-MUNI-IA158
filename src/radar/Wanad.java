@@ -11,6 +11,7 @@ import java.math.*;
  * @version 2018
  * 
  * Weapon Angle Adjustor
+ * Calculates the angle needed to hit target at (x,y)
  */
 public class Wanad extends Thread {
 	
@@ -32,13 +33,15 @@ public class Wanad extends Thread {
 	 * @return int angle that should be set to AngleMotor
 	 */
 	public static int ballisticAngle(int x) {
-		double squareRoot = Math.sqrt( (vSquared*vSquared) - gravConstant*(gravConstant*x*x + 2*y*v*v));
 		
+		// Basic formula
+		double squareRoot = Math.sqrt( (vSquared*vSquared) - gravConstant*(gravConstant*x*x + 2*y*v*v));
 		int theta1 = (int) (Math.round(Math.toDegrees(Math.atan((vSquared + squareRoot) / (gravConstant*x)))));
 		int theta2 = (int) (Math.round(Math.toDegrees(Math.atan((vSquared - squareRoot) / (gravConstant*x)))));
 		
 		System.out.println(x + " > " +theta1 + "  --  " + theta2);
 		
+		// We choose the one requires the least adjusment
 		int theta = theta2;
 		if(Wanad.isWithinAllowedAngle(theta1) && Wanad.isWithinAllowedAngle(theta2)) {
 			if (Math.abs(theta1) < Math.abs(theta2)) {
