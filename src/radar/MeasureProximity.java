@@ -9,7 +9,8 @@ import lejos.hardware.port.SensorPort;
  * @author Gallo, Silhan
  * @version 2018
  * 
- * Class that is used for measure proximity to target
+ * Class representing a task, that measures distance to the
+ * IR beacon.
  */
 public class MeasureProximity {
 	
@@ -18,7 +19,7 @@ public class MeasureProximity {
 	private DataExchange de;
 	
 	/**
-	 * Constructor of measuring unit
+	 * Constructor
 	 * @param de DataExchange object
 	 */
 	public MeasureProximity(DataExchange de) {
@@ -28,7 +29,9 @@ public class MeasureProximity {
 	}
 
 	/**
-	 * It continuously measures proximity to target
+	 * Gets the distance to the IR beacon if in range, otherwise outputs infinity.
+	 * If the IR beacon is within specified distance and angle (to reduce inaccurate
+	 * readings) this distance is then passed via DataExchange to calculate an angle.
 	 */
 	public void run()  {
 			sensor.getSeekMode().fetchSample(sampleData, 0);
