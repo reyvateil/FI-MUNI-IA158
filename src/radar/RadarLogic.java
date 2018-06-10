@@ -3,7 +3,8 @@ package radar;
  * @author Gallo, Silhan
  * @version 2018
  * 
- * The main logic of radar. It switches between defined modes. 
+ * Class encapsulating radar logic responsible for scanning, 
+ * aiming and shooting. 
  * 
  */
 public class RadarLogic extends Thread {
@@ -13,7 +14,7 @@ public class RadarLogic extends Thread {
 	MeasureProximity mp = null;
 	DataExchange de = null;
 	/**
-	 * Constructor of RadarLogic
+	 * Constructor
 	 * @param de DataExchange object
 	 */
 	public RadarLogic(DataExchange de) {
