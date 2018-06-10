@@ -6,7 +6,7 @@ import lejos.hardware.motor.NXTRegulatedMotor;
  * @author Gallo, Silhan
  * @version 2018
  * 
- * Class which represents a canon
+ * Class representing the task that launches a missile.
  */
 public class FireUnit {
 	
@@ -15,7 +15,7 @@ public class FireUnit {
 	private int degree;
 
 	/**
-	 * Constructor of canon
+	 * Constructor
 	 * @param de DataExchange object
 	 */
 	public FireUnit(DataExchange de) {
@@ -27,7 +27,7 @@ public class FireUnit {
 		
 	}
 	/**
-	 * Canon shoots
+	 * Launch a missle
 	 */
 	public void run() {
 		motorC.setSpeed(400);
@@ -38,7 +38,7 @@ public class FireUnit {
 	}
 	
 	/**
-	 * It sets the canon back to ready position.
+	 * Sets the canon back to the default position.
 	 */
 	public void resetFireUnit() {
 		motorC.setSpeed(500);
