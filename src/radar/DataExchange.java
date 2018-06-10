@@ -6,6 +6,8 @@ import lejos.hardware.motor.NXTRegulatedMotor;
  * @version 2018
  * 
  * Utility Class to exchange information between threads.
+ * The class does not contain any logic and the methods
+ * are solely getters and setters.
  */
 public class DataExchange {
 	
