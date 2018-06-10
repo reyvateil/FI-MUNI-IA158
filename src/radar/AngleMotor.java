@@ -6,7 +6,7 @@ import lejos.hardware.motor.NXTRegulatedMotor;
  * @author Gallo, Silhan
  * @version 2018
  * 
- * Class which represents an angle motor which is used for set right angle.
+ * Classes used to adjusting a launcher angle to a correct position before shooting.
  */
 public class AngleMotor{
 	private NXTRegulatedMotor motorB = Motor.B;
@@ -22,7 +22,7 @@ public class AngleMotor{
 	private int angle;
 	
 	/**
-	 * Constructor of angle motor
+	 * Constructor
 	 * @param de DataExchange object
 	 */
 	public AngleMotor(DataExchange de) {
@@ -37,7 +37,7 @@ public class AngleMotor{
 	}
 	
 	/**
-	 * Set the right angle of motor
+	 * Rotate the launcher to a correct angle
 	 */
 	public void run(){
 		// > 0 zneamena jit s motorem do plusu, coz je pohyb dolu
@@ -50,7 +50,7 @@ public class AngleMotor{
 		}
 	}
 	/**
-	 * Set motor to default position
+	 * Set motor to a default angle
 	 * @return boolean True if the motor is set to defaul position
 	 */
 	public boolean defaultPosition() {
